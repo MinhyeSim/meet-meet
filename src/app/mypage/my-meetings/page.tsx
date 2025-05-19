@@ -4,6 +4,7 @@ import ProfileCard from "../../../components/mypage/ProfileCard"
 import Image from "next/image";
 
 
+
 export default function MyPage() {
     const [selectedTab, setSelectedTab] = useState(0);
     return (
@@ -19,21 +20,21 @@ export default function MyPage() {
                         {/*Tab Navigation*/}
                         <div className="bg-white border-t-3 border-gray-800  ">
                             <div className="my-5 flex gap-4 text-xl text-bold p-8">                             
-                                <div    
+                                <button    
                                 onClick={() => setSelectedTab(0)}
-                                className={`${selectedTab === 0 ? "border-gray-700  border-b-3 pb-2 text-gray-700 " : "text-gray-400"}`}>
+                                className={`${selectedTab === 0 ? "border-gray-700  border-b-3 pb-2 text-gray-700 font-semibold" : "text-gray-400 font-semibold"}`}>
                                     나의 모임
-                                </div>
-                                <div 
+                                </button>
+                                <button 
                                 onClick={() => setSelectedTab(1)}
-                                className={`${selectedTab === 1 ? "border-gray-700  border-b-3 pb-2 text-gray-700 " : "text-gray-400"}`}>
+                                className={`${selectedTab === 1 ? "border-gray-700  border-b-3 pb-2 text-gray-700 font-semibold" : "text-gray-400 font-semibold"}`}>
                                     나의 리뷰
-                                </div>
-                                <div 
+                                </button>
+                                <button 
                                 onClick={() => setSelectedTab(2)}
-                                className={`${selectedTab === 2 ? "border-gray-700  border-b-3 pb-2 text-gray-700 " : "text-gray-400"}`}>
+                                className={`${selectedTab === 2 ? "border-gray-700  border-b-3 pb-2 text-gray-700 font-semibold" : "text-gray-400 font-semibold"}`}>
                                     내가 만든 모임
-                                </div>
+                                </button>
                             </div>
                             {/*모임 목록*/}
                             {/*모임 1*/}
@@ -42,8 +43,9 @@ export default function MyPage() {
                                         className="rounded-lg object-cover"                                        
                                         src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1lZXRpbmd8ZW58MHx8MHx8fDA%3D"
                                         width={200}
-                                        height={150}
+                                        height= {120}
                                         alt="모임 이미지"
+                                        priority
                                     />
                                 <div>
                                     <div className="flex gap-2 py-2">
@@ -56,12 +58,15 @@ export default function MyPage() {
                                             <img src="/icons/confirmed.svg" alt="개설확정" width={90} height={120} />
                                         </div>
                                     </div>
-                                        <h3 className="py-2">달램핏 오피스 스트레칭 | <span>을지로 3가</span> </h3>
-                                        <span>
-                                            1월 7일 . 17:30
-                                        </span>
-                                        <span>
-                                            20/20
+                                        <div className="flex">
+                                            <h3 className="py-2 font-semibold">달램핏 오피스 스트레칭 &nbsp;</h3>
+                                            <span className="py-2"> | </span>
+                                            <span className="py-2"> &nbsp; 을지로 3가</span>
+                                        </div>
+                                        <span className="flex items-center space-x-2">
+                                            <span>1월 7일 . 17:30</span>
+                                            <img src="/icons/user.svg" alt="유저" width={20} height={20} className="inline-block" />
+                                            <span>20/20</span>
                                         </span>
                                         <div className="py-2">
                                             <button className="inline-block border border-main-500 text-main-500 rounded-md px-4 py-2 text-sm ">예약 취소하기</button>
@@ -88,16 +93,19 @@ export default function MyPage() {
                                             <img src="/icons/confirmed.svg" alt="개설확정" width={90} height={120} />
                                         </div>
                                     </div>
-                                        <h3 className="py-2">달램핏 오피스 스트레칭 | <span>을지로 3가</span> </h3>
-                                        <span>
-                                            1월 7일 . 17:30
-                                        </span>
-                                        <span>
-                                            20/20
-                                        </span>
-                                        <div className="py-2">
-                                            <button className="inline-block border border-main-500 text-main-500 rounded-md px-4 py-2 text-sm ">예약 취소하기</button>
-                                        </div>                                       
+                                    <div className="flex">
+                                        <h3 className="py-2 font-semibold">달램핏 오피스 스트레칭 &nbsp;</h3>
+                                        <span className="py-2"> | </span>
+                                        <span className="py-2"> &nbsp; 을지로 3가</span>
+                                    </div>
+                                    <span className="flex items-center space-x-2">
+                                        <span>1월 7일 . 17:30</span>
+                                        <img src="/icons/user.svg" alt="유저" width={20} height={20} className="inline-block" />
+                                        <span>20/20</span>
+                                    </span>
+                                    <div className="py-2">
+                                        <button className="inline-block border border-main-500 text-main-500 rounded-md px-4 py-2 text-sm ">예약 취소하기</button>
+                                    </div>                                       
                                 </div>
                             </div>
                             {/*모임 3*/}
@@ -120,16 +128,19 @@ export default function MyPage() {
                                             <img src="/icons/confirmed.svg" alt="개설확정" width={90} height={120} />
                                         </div>
                                     </div>
-                                        <h3 className="py-2">달램핏 오피스 스트레칭 | <span>을지로 3가</span> </h3>
-                                        <span>
-                                            1월 7일 . 17:30
-                                        </span>
-                                        <span>
-                                            20/20
-                                        </span>
-                                        <div className="py-2">
-                                            <button className="inline-block border border-main-500 text-main-500 rounded-md px-4 py-2 text-sm ">예약 취소하기</button>
-                                        </div>                                        
+                                    <div className="flex">
+                                        <h3 className="py-2 font-semibold">달램핏 오피스 스트레칭 &nbsp;</h3>
+                                        <span className="py-2"> | </span>
+                                        <span className="py-2"> &nbsp; 을지로 3가</span>
+                                    </div>
+                                    <span className="flex items-center space-x-2">
+                                        <span>1월 7일 . 17:30</span>
+                                        <img src="/icons/user.svg" alt="유저" width={20} height={20} className="inline-block" />
+                                        <span>20/20</span>
+                                    </span>
+                                    <div className="py-2">
+                                        <button className="inline-block border border-main-500 text-main-500 rounded-md px-4 py-2 text-sm ">예약 취소하기</button>
+                                    </div>                                        
                                 </div>
                             </div>
                         </div>
