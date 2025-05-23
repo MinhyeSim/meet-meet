@@ -42,7 +42,7 @@ export default function MyReviewList() {
     data: gatherings = [],
     isLoading,
     error,
-  } = useQuery({
+  } = useQuery<Gathering[], Error>({
     queryKey: ["myReviewGatherings"],
     queryFn: fetchGatherings,
     enabled: isClient && !!token,

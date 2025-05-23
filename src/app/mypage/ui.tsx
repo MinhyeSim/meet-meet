@@ -93,7 +93,7 @@ export default function MyPageUI() {
                 </div>
                 )}
 
-                {selectedTab === 1 && <MyReviewList gatherings={meetings} />}
+                {selectedTab === 1 && <MyReviewList/>}
                 {selectedTab === 2 && <CreatedMeetingList />}
             </div>
             </div>

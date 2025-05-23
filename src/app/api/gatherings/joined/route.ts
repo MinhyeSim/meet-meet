@@ -4,7 +4,7 @@ import axios from 'axios';
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const response = await axios.get(`${process.env.API_URI_DEV}/gatherings`, {
+    const response = await axios.get(`${process.env.API_URI_DEV}/gatherings/joined`, {
         params: Object.fromEntries(searchParams),
         headers: {
             'Authorization': request.headers.get('Authorization') || '',
