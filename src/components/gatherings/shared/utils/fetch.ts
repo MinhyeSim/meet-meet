@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Gathering } from "@/lib/types/gatherings";
+import { Gathering } from "@/types/gatherings";
 
 /**
  * 페이지네이션된 모임 목록을 조회합니다.
