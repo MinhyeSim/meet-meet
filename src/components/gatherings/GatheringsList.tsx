@@ -21,6 +21,7 @@ export default function GatheringsList({
     const observerRef = useRef<IntersectionObserver | null>(null);
     const router = useRouter();
 
+
     // 무한스크롤 활성화 상태
     const [infiniteScrollEnabled, setInfiniteScrollEnabled] = useState(false);
 
