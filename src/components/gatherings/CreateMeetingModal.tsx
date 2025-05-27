@@ -80,7 +80,7 @@ export default function CreateMeetingModal({ onClose }: { onClose: () => void })
             }
 
             // 이미지 타입 검증
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'video/avi', 'image/webp'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/avif', 'image/webp'];
             if(!allowedTypes.includes(file.type)){
                 setError("이미지 파일 타입이 맞지않습니다.jpg, png, gif, svg, avi, webp 파일만 가능합니다.");
                 return;
