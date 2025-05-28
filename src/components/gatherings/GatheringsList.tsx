@@ -3,12 +3,13 @@
 import { useState, useRef, useCallback, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { fetchGatheringsPaginated } from "@/components/gatherings/shared/utils/fetch";
-import { AuthContext } from "@/providers/AuthProvider";
 import { useSavedGatherings } from "@/components/gatherings/shared/hooks/useSavedGatherings";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Gathering, GatheringsListProps } from "@/types/gatherings"; // ✅ 경로 변경
 import { formatDate, formatTime, getTimeRemaining } from '@/components/shared/utils/format'; // ✅ format 함수 import
+import { fetchGatheringsPaginated } from "@/components/gatherings/shared/utils/fetch";
+import { AuthContext } from "@/providers/AuthProvider";
+
 
 // 모임 목록 컴포넌트
 export default function GatheringsList({
