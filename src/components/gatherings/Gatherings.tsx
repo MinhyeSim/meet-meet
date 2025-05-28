@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Gathering } from "@/types/gatherings";
 import CreateMeetingModal from "@/components/gatherings/CreateMeetingModal";
 import GatheringsList from "@/components/gatherings/GatheringsList";
 import Image from "next/image";
+import { AuthContext } from "@/providers/AuthProvider";
 
 interface PageProps {
     initialGatherings?: Gathering[];
@@ -12,6 +13,9 @@ interface PageProps {
 
 export default function Gatherings({ initialGatherings = [] }: PageProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { token } = useContext(AuthContext);
+    const isLoggedIn = !!token; // 로그인 여부 확인
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -38,9 +42,11 @@ export default function Gatherings({ initialGatherings = [] }: PageProps) {
                             <button className="text-gray-900 text-lg font-semibold px-4 py-1">
                                 주제2
                             </button>
+                            {isLoggedIn && (    
                             <button onClick={openModal} className="bg-main-500 text-white font-semibold text-sm px-4 py-1 rounded-lg ml-auto">
                                 모임 만들기
                             </button>
+                            )}
                         </div>
                         <div className="w-full flex flex-col justify-start py-5 border-b-2 border-gray-200">
                             <div className="flex flex-row items-center gap-2">
