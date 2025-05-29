@@ -118,7 +118,7 @@ export default function GatheringsDetailPageUI({ params }: PageProps) {
                             />
                         </article>
                         {/* 모임 정보 */}
-                        <article className='max-w-screen-lg sm:w-[30rem] h-[14rem] px-6 py-5 border-2 border-gray-300 bg-white rounded-lg flex flex-col justify-between gap-4'
+                        <article className='max-w-screen-lg sm:w-[30rem] h-[14rem] px-6 py-5 border-2 border-gray-300 bg-white rounded-lg flex flex-col justify-between gap-4 overflow-hidden'
                         >
                             {/* 상단 */}
                             <div className='flex justify-between gap-8'>
@@ -126,13 +126,17 @@ export default function GatheringsDetailPageUI({ params }: PageProps) {
                                 <div className='flex flex-col'>
                                     {/* 제목, 주소 */}
                                     <div className="flex flex-col min-w-0">
-                                        <h2 className="text-xl font-bold max-w-full">
-                                            {detail?.name}
+                                        <h2 className="text-xl font-bold max-w-full" title={detail?.name}>
+                                            {detail?.name
+                                                ? detail.name.length > 20
+                                                    ? detail.name.slice(0, 20) + '...'
+                                                    : detail.name
+                                                : ''}
                                         </h2>
                                         <span className="text-gray-500">{detail?.location || '장소'}</span>
                                     </div>
                                     {/* 날짜 시간 */}
-                                    <div className="flex items-center gap-1 text-sm text-gray-500">
+                                    <div className="flex sm:hidden md:flex items-center gap-1 text-sm text-gray-500">
                                         <span>{formatDate(detail?.dateTime || 'OOOO-OO-OO')}</span>
                                         <span>·</span>
                                         <span>{formatTime(detail?.dateTime || 'OO:OO')}</span>
@@ -216,7 +220,7 @@ export default function GatheringsDetailPageUI({ params }: PageProps) {
                 <section className='w-full h-full px-4 py-4 flex flex-col gap-4 bg-white rounded-lg'>
                     <h1 className='text-lg font-semibold'>다른 참여자들은 이렇게 느꼈어요!</h1>
                     {reviewsLoading ? (
-                        <DetailReviewLoading />
+                        <DetailReviewLoading width='w-full' height='h-32' />
                     ) : (
                         reviews?.data?.map((review: ReviewItem) => (
                             <div
