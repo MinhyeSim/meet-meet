@@ -8,7 +8,7 @@ async function getInitialGatherings(): Promise<Gathering[]> {
             next: { revalidate: 60 },
             headers: {
                 'Content-Type': 'application/json',
-            }
+            },
         });
 
         if (!response.ok) {
