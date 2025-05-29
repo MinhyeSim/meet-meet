@@ -1,3 +1,5 @@
+'use client';
+
 import { useGatheringsStore } from '@/store/gatheringsStore';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -6,13 +8,13 @@ interface WriteReviewParams {
     score: number;
     comment: string;
     token: string;
-  }
+}
 
-export const useWriteReview=(onSuccessCallback: () => void) => {
+export const useWriteReview = (onSuccessCallback: () => void) => {
     const queryClient = useQueryClient();
 
-    const writeReview  = useMutation({
-        mutationFn: async ( { gatheringId, score, comment, token }: WriteReviewParams) => {
+    const writeReview = useMutation({
+        mutationFn: async ({ gatheringId, score, comment, token }: WriteReviewParams) => {
             if (!token) throw new Error('로그인이 필요합니다.');
             const response = await axios.post(`/api/reviews`, { gatheringId, score, comment }, {
                 headers: { Authorization: `Bearer ${token}` }

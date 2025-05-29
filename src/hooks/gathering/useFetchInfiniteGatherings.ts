@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, useCallback, useContext } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchGatheringsPaginated } from '@/components/gatherings/shared/utils/fetch';

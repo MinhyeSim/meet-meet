@@ -3,10 +3,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import { useContext } from 'react';
+import { AuthContext } from '@/providers/AuthProvider';
 import Image from 'next/image';
 import axios from 'axios';
 
-import { AuthContext } from '@/providers/AuthProvider';
 
 export interface GatheringData {
   id: string;
