@@ -236,7 +236,7 @@ export default function GatheringsDetailPageUI({ params }: PageProps) {
                                 </div>
                                 <p className='text-sm'>{review?.comment}</p>
                                 <div className='flex items-center gap-1 text-xs'>
-                                    <Image src={review?.User?.image || '/icons/default_profile_image.svg'} alt='프로필 이미지' width={32} height={32} className='rounded-full' />
+                                    <Image src={review?.User?.image || '/icons/default_profile_image.svg'} alt='프로필 이미지' width={32} height={32} className='w-6 h-6 rounded-full' />
                                     <span>{review?.User?.name}</span>
                                     <span>|</span>
                                     <span>{formatDate(review?.createdAt || 'OOOO-OO-OO')}</span>
