@@ -76,7 +76,6 @@ export default function JoinedGatherings() {
   }
 
   return (
-    <>
       <main className="contents-container">
         {gatherings.map(data => (
           <div
@@ -131,6 +130,5 @@ export default function JoinedGatherings() {
           onClose={() => setErrorModalOpen(false)}
         />
       </main>
-    </>
   );
 }
