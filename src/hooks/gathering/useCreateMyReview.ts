@@ -3,18 +3,24 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
-interface WriteReviewParams {
+interface createMyReviewParams {
     gatheringId: number;
     score: number;
     comment: string;
     token: string;
 }
 
-export const useWriteReview = (onSuccessCallback: () => void) => {
+/**
+ * 나의 리뷰 생성 훅
+ * @param onSuccessCallback 
+ * @returns {function} mutateCreateMyReview - 리뷰 생성 함수
+ */
+
+export const useCreateMyReview = (onSuccessCallback: () => void) => {
     const queryClient = useQueryClient();
 
-    const writeReview = useMutation({
-        mutationFn: async ({ gatheringId, score, comment, token }: WriteReviewParams) => {
+    const createMyReview = useMutation({
+        mutationFn: async ({ gatheringId, score, comment, token }: createMyReviewParams) => {
             if (!token) throw new Error('로그인이 필요합니다.');
             const response = await axios.post(`/api/reviews`, { gatheringId, score, comment }, {
                 headers: { Authorization: `Bearer ${token}` }
@@ -23,6 +29,8 @@ export const useWriteReview = (onSuccessCallback: () => void) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['myGatheringReviews'] });
+            queryClient.invalidateQueries({ queryKey: ["gatheringReviews"] });
+
             alert('리뷰가 성공적으로 등록되었습니다.');
             onSuccessCallback();
         },
@@ -36,5 +44,5 @@ export const useWriteReview = (onSuccessCallback: () => void) => {
         }
     });
 
-    return { mutateWriteReview: writeReview.mutate }
+    return { mutateCreateMyReview: createMyReview.mutate }
 }
