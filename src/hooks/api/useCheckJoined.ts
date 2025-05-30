@@ -1,7 +1,6 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'next/navigation';
 import { JoinedGathering } from '@/types/gatherings';
 import axios from 'axios';
 
@@ -14,12 +13,10 @@ export const useCheckJoined = (
     id: number,
     token: string | null
 ) => {
-    const searchParams = useSearchParams();
-    const queries = searchParams.toString();
 
-    const fetchJoinChecking = async () => {
+    const fetchJoinedCheck = async () => {
         try {
-            const response = await axios.get(`/api/gatherings/joined?${queries}`, { headers: { Authorization: `Bearer ${token}` } },);
+            const response = await axios.get(`/api/gatherings/joined?`, { headers: { Authorization: `Bearer ${token}` } },);
             return response.data.some((gathering: JoinedGathering) => gathering.id === Number(id))
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -32,8 +29,8 @@ export const useCheckJoined = (
 
     const { data, isLoading, isError } = useQuery({
         enabled: !!id && !!token,
-        queryKey: ['checkJoinded', id],
-        queryFn: () => fetchJoinChecking(),
+        queryKey: ['checkGatheringJoined', id],
+        queryFn: () => fetchJoinedCheck(),
         refetchOnWindowFocus: false,
         refetchOnMount: false,
         refetchOnReconnect: false,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import ProfileCard from "@/components/mypage/ProfileCard";
 import JoinedGatherings from "@/components/mypage/JoinedGatherings";
 import MyReviews from "@/components/mypage/MyReviews";
@@ -26,7 +26,7 @@ export default function MyPageUI() {
         </div>
 
         {/* 탭 네비게이션 */}
-        <div className="bg-white border-t-[3px] border-gray-800">
+        <div className=" border-t-[3px] border-gray-800">
           <div className="pt-8 flex gap-4 text-lg font-bold p-5">
             {[
               { label: "참여중인 모임", value: MypageTab.JoinedGatherings },
@@ -48,9 +48,7 @@ export default function MyPageUI() {
           </div>
 
           {/* 탭에 따른 내용 */}
-          <Suspense fallback={<div>로딩 중...</div>}>
-            <JoinedGatherings />
-          </Suspense>
+          {selectedTab === MypageTab.JoinedGatherings && <JoinedGatherings />}
           {selectedTab === MypageTab.MyReviews && <MyReviews />}
           {selectedTab === MypageTab.CreatedGatherings && <CreatedGatherings />}
         </div>
